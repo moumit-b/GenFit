@@ -1,9 +1,10 @@
+const dotenv = require('dotenv');
+dotenv.config();  
+
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const firebaseAdmin = require('./config/firebaseConfig');
 
-dotenv.config();
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
@@ -30,6 +31,17 @@ app.use('/api/genetic-data', geneticDataRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+// Test for Firebase route
+app.get('/api/test-firebase', async (req, res) => {
+  try {
+    const userRecord = await firebaseAdmin.auth().getUserByEmail('testuser@example.com');
+    res.status(200).json(userRecord);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 
 /* PERSONAL NOTES
