@@ -32,6 +32,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    subscriptionStatus: {
+        type: String,
+        enum: ['Free', 'Premium'],
+        default: 'Free',
+    },
     geneticData: {
         type: Object,
         default: {},
@@ -48,6 +53,10 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    bodyFatPercent: {
+        type: Number,
+        default: [],
+    }
 });
 
 const User = mongoose.model('User', userSchema);
