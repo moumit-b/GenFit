@@ -25,10 +25,12 @@ app.get('/', (req, res) => {
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const geneticDataRoutes = require('./routes/geneticDataRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // Use routes
 app.use('/api/auth', authRoutes);
 app.use('/api/genetic-data', geneticDataRoutes);
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
