@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
     },
     bodyFatPercent: {
         type: Number,
-        default: [],
+        default: null,
     }
 });
 
